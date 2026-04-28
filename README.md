@@ -1,8 +1,5 @@
 # Testing React Apps
-
-This is the starter project for my Reacting testing course where you'll learn everything you need to know to effectively test React apps. You can find the full course at: 
-
-https://codewithmosh.com 
+Testing react-app with Testing-Library
 
 ## About this Project 
 
