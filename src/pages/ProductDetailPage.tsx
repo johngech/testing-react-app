@@ -3,7 +3,7 @@ import useProduct from "../hooks/useProduct";
 
 const ProductDetailPage = () => {
   const params = useParams();
-  const productId = parseInt(params.id!);
+  const productId = Number.parseInt(params.id as string);
   const { data: product, isLoading, error } = useProduct(productId);
 
   if (isLoading) return <div>Loading...</div>;

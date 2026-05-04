@@ -4,15 +4,15 @@ import "@testing-library/jest-dom";
 vi.stubGlobal(
   "ResizeObserver",
   class ResizeObserver {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
+    observe = () => ({});
+    unobserve = () => ({});
+    disconnect = () => ({});
   }
 );
 
 Object.defineProperty(globalThis, "matchMedia", {
   writable: true,
-  value: (query: any) => ({
+  value: (query: unknown) => ({
     matches: false,
     media: query,
     onchange: null,

@@ -13,7 +13,7 @@ function ProductListPage() {
 
     if (error) return <div>Error: {error.message}</div>;
 
-    if (products!.length === 0) return <p>No product was found!</p>;
+    if (products?.length === 0) return <p>No product was found!</p>;
 
     return (
       <Table.Root>
@@ -25,7 +25,7 @@ function ProductListPage() {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {products!.map((product) => (
+          {products?.map((product) => (
             <Table.Row key={product.id}>
               <Table.Cell>
                 <Link to={product.id.toString()}>{product.name}</Link>

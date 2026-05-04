@@ -39,7 +39,7 @@ const ProductForm = ({ product, onSubmit }: Props) => {
         try {
           setSubmitting(true);
           await onSubmit(formData);
-        } catch (error) {
+        } catch {
           toast.error("An unexpected error occurred");
         } finally {
           setSubmitting(false);
@@ -48,20 +48,23 @@ const ProductForm = ({ product, onSubmit }: Props) => {
       className="space-y-3"
     >
       <Box>
-        <TextField.Root className="max-w-sm">
-          <TextField.Input placeholder="Name" {...register("name")} size="3" />
-        </TextField.Root>
+        <TextField.Root
+          className="max-w-sm"
+          placeholder="Name"
+          size="3"
+          {...register("name")}
+        />
         <ErrorMessage error={errors.name} />
       </Box>
       <Box>
-        <TextField.Root className="w-24">
+        <TextField.Root
+          className="w-24"
+          placeholder="Price"
+          maxLength={5}
+          size="3"
+          {...register("price")}
+        >
           <TextField.Slot>$</TextField.Slot>
-          <TextField.Input
-            placeholder="Price"
-            maxLength={5}
-            size="3"
-            {...register("price", { valueAsNumber: true })}
-          />
         </TextField.Root>
         <ErrorMessage error={errors.price} />
       </Box>
@@ -73,7 +76,9 @@ const ProductForm = ({ product, onSubmit }: Props) => {
             <Select.Root
               size="3"
               defaultValue={product?.categoryId.toString() || ""}
-              onValueChange={(value) => field.onChange(+value)}
+              onValueChange={(value) => {
+                field.onChange(+value);
+              }}
             >
               <Select.Trigger placeholder="Category" />
               <Select.Content>

@@ -9,7 +9,7 @@ import useProduct from "../../hooks/useProduct";
 const EditProductPage = withAuthenticationRequired(() => {
   const navigate = useNavigate();
   const params = useParams();
-  const productId = parseInt(params.id!);
+  const productId = Number.parseInt(params.id ?? "");
   const { data: product, isLoading, error } = useProduct(productId);
 
   if (isLoading) return <div>Loading...</div>;

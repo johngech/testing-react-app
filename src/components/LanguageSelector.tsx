@@ -8,7 +8,9 @@ const LanguageSelector = () => {
   return (
     <Select.Root
       defaultValue={currentLanguage}
-      onValueChange={(lang) => changeLanguage(lang as Language)}
+      onValueChange={(lang) => {
+        changeLanguage(lang as Language);
+      }}
     >
       <Select.Trigger />
       <Select.Content>

@@ -13,9 +13,11 @@ interface Props {
 export function LanguageProvider({ language, children }: Props) {
   const [currentLanguage, setCurrentLanguage] = useState<Language>(language);
 
-  const changeLanguage = (language: Language) => setCurrentLanguage(language);
+  const changeLanguage = (language: Language) => {
+    setCurrentLanguage(language);
+  };
 
-  const labelsDictionary: { [key: string]: { [key: string]: string } } = {
+  const labelsDictionary: Record<string, Record<string, string>> = {
     en,
     es,
   };

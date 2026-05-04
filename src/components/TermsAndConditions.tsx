@@ -16,7 +16,9 @@ const TermsAndConditions = () => {
             type="checkbox"
             id="agree"
             checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
+            onChange={() => {
+              setIsChecked(!isChecked);
+            }}
             className="mr-1"
           />{" "}
           I accept the terms and conditions.

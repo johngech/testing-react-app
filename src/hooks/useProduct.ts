@@ -12,15 +12,11 @@ const useProduct = (productId: number) => {
 
 const fetchProduct = async (id: number) => {
   try {
-    if (isNaN(id)) return null;
+    if (Number.isNaN(id)) return null;
     const { data } = await axios.get(`/products/${id}`);
     return data;
   } catch (error) {
-    if (
-      error instanceof AxiosError &&
-      error.response &&
-      error.response.status === 404
-    )
+    if (error instanceof AxiosError && error.response?.status === 404)
       return null;
     throw error;
   }

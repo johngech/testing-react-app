@@ -7,13 +7,33 @@ const QuantitySelector = ({ product }: { product: Product }) => {
 
   const cartItem = getItem(product);
   if (!cartItem)
-    return <Button onClick={() => addToCart(product)}>Add to Cart</Button>;
+    return (
+      <Button
+        onClick={() => {
+          addToCart(product);
+        }}
+      >
+        Add to Cart
+      </Button>
+    );
 
   return (
     <Flex gap="3" align="center" role="spinbutton">
-      <Button onClick={() => removeFromCart(product)}>-</Button>
+      <Button
+        onClick={() => {
+          removeFromCart(product);
+        }}
+      >
+        -
+      </Button>
       <Text role="status">{cartItem.quantity}</Text>
-      <Button onClick={() => addToCart(product)}>+</Button>
+      <Button
+        onClick={() => {
+          addToCart(product);
+        }}
+      >
+        +
+      </Button>
     </Flex>
   );
 };

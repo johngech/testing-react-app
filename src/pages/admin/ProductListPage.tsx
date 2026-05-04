@@ -13,7 +13,7 @@ const ProductListPage = withAuthenticationRequired(() => {
 
     if (error) return <div>Error: {error.message}</div>;
 
-    if (products!.length === 0) return <p>No product was found!</p>;
+    if (products?.length === 0) return <p>No product was found!</p>;
 
     return (
       <Table.Root>
@@ -24,7 +24,7 @@ const ProductListPage = withAuthenticationRequired(() => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {products!.map((product) => (
+          {products?.map((product) => (
             <Table.Row key={product.id}>
               <Table.Cell>{product.name}</Table.Cell>
               <Table.Cell>${product.price}</Table.Cell>

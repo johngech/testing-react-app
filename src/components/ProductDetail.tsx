@@ -1,30 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Product } from "../entities";
 
 const ProductDetail = ({ productId }: { productId: number }) => {
   const [product, setProduct] = useState<Product | undefined>(undefined);
-  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    if (!productId) {
-      setError("Invalid ProductId");
-      return;
-    }
+    if (!productId) return;
 
-    setLoading(true);
-    fetch("/products/" + productId)
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
+    fetch("/products/" + productId, { signal: controller.signal })
       .then((res) => res.json())
-      .then((data) => setProduct(data))
-      .catch((err) => setError((err as Error).message))
-      .finally(() => setLoading(false));
-  }, []);
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setError((err as Error).message);
+      })
+      .finally(() => {
+        abortControllerRef.current = null;
+      });
 
-  if (isLoading) return <div>Loading...</div>;
+    return () => {
+      controller.abort();
+    };
+  }, [productId]);
+
+  if (!productId) return <div>Error: Invalid ProductId</div>;
 
   if (error) return <div>Error: {error}</div>;
 
-  if (!product) return <div>The given product was not found.</div>;
+  if (!product) return <div>Loading...</div>;
 
   return (
     <div>

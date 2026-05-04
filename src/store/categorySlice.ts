@@ -45,7 +45,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(fetchCategories.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message!;
+      state.error = action.error.message ?? null;
     });
   },
   reducers: {},

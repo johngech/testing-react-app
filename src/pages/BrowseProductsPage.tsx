@@ -54,9 +54,9 @@ function BrowseProducts() {
     if (errorCategories) return <div>Error: {errorCategories}</div>;
     return (
       <Select.Root
-        onValueChange={(categoryId) =>
-          setSelectedCategoryId(parseInt(categoryId))
-        }
+        onValueChange={(categoryId) => {
+          setSelectedCategoryId(parseInt(categoryId));
+        }}
       >
         <Select.Trigger placeholder="Filter by Category" />
         <Select.Content>

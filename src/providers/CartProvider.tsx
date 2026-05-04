@@ -1,17 +1,17 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { Product } from "../entities";
 
-type CartItem = {
+interface CartItem {
   product: Product;
   quantity: number;
-};
+}
 
-type CartContextType = {
+interface CartContextType {
   getItem: (product: Product) => CartItem | null;
   addToCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
   getItemCount: () => number;
-};
+}
 
 export const CartContext = createContext<CartContextType>(
   {} as CartContextType
