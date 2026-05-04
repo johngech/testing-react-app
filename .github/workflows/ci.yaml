@@ -1,0 +1,31 @@
+name: Format, Lint & Test
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  format-lint-test:
+    name: Format,Lint & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        uses: bun install --frozen-lockfile
+
+      - name: Format Code
+        uses: bun run format
+
+      - name: Lint code
+        uses: bun run lint
+
+      - name: Run Tests
+        uses: bunx vitest run
