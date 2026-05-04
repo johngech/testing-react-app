@@ -7,7 +7,7 @@ vi.stubGlobal(
     observe() {}
     unobserve() {}
     disconnect() {}
-  },
+  }
 );
 
 Object.defineProperty(globalThis, "matchMedia", {

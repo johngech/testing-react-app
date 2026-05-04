@@ -10,7 +10,7 @@ describe("ToastDemo", () => {
       <>
         <ToastDemo />
         <Toaster />
-      </>,
+      </>
     );
     const button = screen.getByRole("button");
     const user = userEvent.setup();

@@ -11,7 +11,8 @@
     "server": "json-server src/data/db.json",
     "start": "concurrently \"bun run server\" \"bun run dev\"",
     "test": "bunx vitest --passWithNoTests",
-    "test:ui": "bunx vitest --ui --passWithNoTests"
+    "test:ui": "bunx vitest --ui --passWithNoTests",
+    "format": "bunx prettier . --write"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.16.2",
@@ -49,8 +50,10 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "jsdom": "^29.1.0",
+    "prettier": "^3.8.3",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.1",
     "vite": "^8.0.10",
     "vitest": "^4.1.5"
   }

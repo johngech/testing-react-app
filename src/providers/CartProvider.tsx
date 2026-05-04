@@ -21,7 +21,9 @@ export function CartProvider({ children }: PropsWithChildren) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const getItem = (product: Product) => {
-    const index = cartItems.findIndex((item) => item.product.id === product.id);
+    const index = cartItems.findIndex(
+      (item) => item.product.id === product.id
+    );
     return index !== -1 ? cartItems[index] : null;
   };
 

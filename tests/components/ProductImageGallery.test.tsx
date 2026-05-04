@@ -6,7 +6,9 @@ describe("ProductImageGallery", () => {
   it("should render nothing when no images are found", () => {
     const imageUrls: string[] = [];
 
-    const { container } = render(<ProductImageGallery imageUrls={imageUrls} />);
+    const { container } = render(
+      <ProductImageGallery imageUrls={imageUrls} />
+    );
 
     expect(container).toBeEmptyDOMElement();
   });

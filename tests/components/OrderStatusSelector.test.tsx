@@ -10,7 +10,7 @@ describe("OrderStatusSelector", () => {
     render(
       <Theme>
         <OrderStatusSelector onChange={onChange} />
-      </Theme>,
+      </Theme>
     );
 
     return {
@@ -58,7 +58,7 @@ describe("OrderStatusSelector", () => {
       await user.click(option);
 
       expect(onChange).toHaveBeenCalledWith(value);
-    },
+    }
   );
 
   it("should call onChange with 'new' when the New option is selected", async () => {
@@ -73,7 +73,7 @@ describe("OrderStatusSelector", () => {
     await user.click(trigger);
 
     const newOption = await getOption(/new/i);
-    
+
     await user.click(newOption);
 
     expect(onChange).toHaveBeenCalledWith("new");

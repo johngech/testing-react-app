@@ -9,7 +9,8 @@ const PrivateRoutes = () => {
 
   if (isLoading) return null;
 
-  if (!isAuthenticated) return <Navigate to={`/login?returnUrl=${pathname}`} />;
+  if (!isAuthenticated)
+    return <Navigate to={`/login?returnUrl=${pathname}`} />;
 
   return <Outlet />;
 };
